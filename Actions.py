@@ -1,8 +1,8 @@
 from State import State
 class Actions:
 
-	def __init__(self):
-		actions = []
+	def __init__(self, temp):
+		self.actions = temp
 
 	def update_actions(State): #append possible actions at the current state to self actions
 		for i in range(0,3):
@@ -22,11 +22,6 @@ class Actions:
 
 
 if __name__ == "__main__":
-	initial = [['.', '1', '.'],['.', '.', '.'],['.', '.', '.']]
-	temp = State(initial, 'o')
-	temp_two = Actions(temp)
-	# print(temp_two.states.board)
-	# print(temp_two.states.turn)
-	# print(temp_two.actions)
-	temp_two.update_actions()
-	print(temp_two.action)
+	act = Actions(['x'])
+	print(act.actions)
+

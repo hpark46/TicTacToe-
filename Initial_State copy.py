@@ -1,14 +1,16 @@
 from State import State
 class Initial_State:
 
-	def __init__(self):
-		board = [['.', '.', '.'],['.', '.', '.'],['.', '.', '.']]
-		player = 'x'
+	def __init__(self, xo):
+		self.board = [['.', '.', '.'],['.', '.', '.'],['.', '.', '.']]
+		self.player = 'x'
+		self.xo = xo
+
 
 
 
 	def initialize(self):
-		return State(self.board, self.player)
+		return State(self.board, self.player, self.xo)
 
 
 
