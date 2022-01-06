@@ -14,7 +14,15 @@ def minimax(board, turn, player):
 		# toggle_turn.   tm
 		# unchanging player 'x/o'
 
-		num_util = min_value(transition_model(board, moves[num], turn), player)
+
+		num_util = min_value(result(board, moves[num], turn), toggle_turn(turn), player)
+
+		#undo result() and toggle_turn()
+		(i,j) = moves[num]
+		board[i][j] = '.'
+		toggle_turn(turn)
+
+
 
 
 		if (num_util > best_util):
@@ -42,13 +50,21 @@ def max_value(board, turn, player):
 
 		for move in moves:
 
-			best_util = max(best_util, min_value(transition_model(board, move, turn), player))
+
+			best_util = max(best_util, min_value(result(board, move, turn), toggle_turn(turn), player))
+
+
+			# undo result() and toggle_turn() 
+			(i,j) = move
+			board[i][j] = '.'
+			toggle_turn(turn)
 
 		return best_util
 
 
 
 def min_value(board, turn, player):
+
 
 	status = terminal_test(board)   #'d'/'o'/'x'/'n'
 
@@ -64,7 +80,12 @@ def min_value(board, turn, player):
 
 		for move in moves:
 
-			worst_util = min(worst_util, min_value(transition_model(board, move, turn), player))
+			worst_util = min(worst_util, max_value(result(board, move, turn), toggle_turn(turn) , player))
+
+			# undo result() and toggle_turn() 
+			(i,j) = move
+			board[i][j] = '.'
+			toggle_turn(turn)
 
 		return worst_util
 
