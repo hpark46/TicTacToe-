@@ -2,6 +2,7 @@ import math
 import sys
 from state_space import *
 from Minimax import *
+from alphabeta import *
 
 
 
@@ -48,7 +49,7 @@ def run():
 			print('')
 
 
-			o_move = minimax(board, 'o', 'o')   #minimax to computer's favor
+			o_move = alpha_beta(board, 'o', 'o')   #minimax to computer's favor
 
 			board, turn = transition_model(board, o_move, 'o')
 
@@ -66,7 +67,7 @@ def run():
 			print_board(board)
 			print('')
 
-			x_move = minimax(board, 'x', 'x')  #minimax to computer's favor
+			x_move = alpha_beta(board, 'x', 'x')  #minimax to computer's favor
 
 
 			board, turn = transition_model(board, x_move, 'x')
